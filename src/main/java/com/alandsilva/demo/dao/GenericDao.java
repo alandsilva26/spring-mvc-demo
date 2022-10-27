@@ -4,7 +4,11 @@ public interface GenericDao<T, ID> {
 
     Iterable<T> findAll();
 
-    ID save();
+    ID save(T entity);
 
-    T findById();
+    T findById(ID id);
+
+    void deleteById(ID id);
+
+    void update(T entity);
 }

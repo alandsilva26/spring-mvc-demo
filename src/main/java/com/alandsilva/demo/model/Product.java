@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -12,18 +14,20 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Entity(name = "Brand")
-@Table(name = "brands")
-public class Brand {
+@Entity(name = "Product")
+@Table(name = "products")
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "brand_id")
-    private Long brandId;
+    @Column(name = "product_id")
+    private Long productId;
 
     private String title;
+    private Double price;
+    private int quantity;
 
-    public Brand(String title) {
-        this.title = title;
-    }
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
 }

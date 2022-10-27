@@ -1,8 +1,5 @@
 package com.alandsilva.demo.controller;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +31,6 @@ class Numbers {
 
 @Controller
 public class MainController {
-
-    @Autowired
-    LocalSessionFactoryBean sessionFactory;
 
     @RequestMapping("/")
     public ModelAndView index() {
