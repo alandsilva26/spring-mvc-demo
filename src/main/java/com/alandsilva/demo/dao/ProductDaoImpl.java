@@ -2,6 +2,8 @@ package com.alandsilva.demo.dao;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +44,12 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void deleteById(Long id) {
-        // TODO Auto-generated method stub
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("DELETE FROM Brand WHERE product_id = :productId");
+        query.setParameter("productId", id);
+        query.executeUpdate();
+        session.close();
     }
 
     @Override

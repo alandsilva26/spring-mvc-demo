@@ -49,4 +49,11 @@ public class ProductController {
         productServiceImpl.createProduct(productCreationDto);
         return "redirect:/products";
     }
+
+    @PostMapping("/delete")
+    public String deleteProduct(@ModelAttribute Product product) {
+        System.out.println("HERE---------------------------------------");
+        productDao.deleteById(product.getProductId());
+        return "redirect:/products";
+    }
 }
